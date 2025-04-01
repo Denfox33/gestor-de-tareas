@@ -1,0 +1,52 @@
+import java.util.ArrayList;
+import java.util.List;
+
+class Task {
+    private String title;
+    private boolean completed;
+
+    public Task(String title) {
+        this.title = title;
+        this.completed = false;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public boolean isCompleted() {
+        return completed;
+    }
+
+    public void markCompleted() {
+        this.completed = true;
+    }
+}
+
+class TaskManager {
+    private List<Task> tasks;
+
+    public TaskManager() {
+        this.tasks = new ArrayList<>();
+    }
+
+    public void addTask(String title) {
+        tasks.add(new Task(title));
+    }
+
+    public List<Task> getTasks() {
+        return tasks;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        TaskManager taskManager = new TaskManager();
+        taskManager.addTask("Aprender Java");
+        taskManager.addTask("Subir proyecto a GitHub");
+        
+        for (Task task : taskManager.getTasks()) {
+            System.out.println("Tarea: " + task.getTitle() + " | Completada: " + task.isCompleted());
+        }
+    }
+}
